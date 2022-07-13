@@ -1,17 +1,21 @@
 import React from 'react';
 import { View } from 'react-native';
-import AppButton from '../components/AppButton';
+import Card from '../components/Card';
 
 function LoginScreen(props) {
     return (
         <View 
             style={{
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
+                backgroundColor: '#e8e8e8',
+                pasdding: 20,
+                paddingTop: 100,
             }}
         >
-            <AppButton title="Login" onPress={() => console.log('Works!!')}/>
+            <Card 
+                title='Jacket'
+                subTitle='$100'
+                image={require('../assets/jacket.jpg')}
+            />
         </View>
     );
 }
