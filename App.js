@@ -7,9 +7,18 @@ import TestScreen from './app/screens/TestScreen';
 import TextScreen from './app/screens/TextScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
+import Screen from './app/components/Screen';
+import Icon from './app/components/Icon';
+import ListItem from './app/components/ListItem';
 
 export default function App() {
-  return <ListingDetailsScreen />
+  return (
+  <Screen>
+    <ListItem 
+      title='My Titls'
+      IconComponent={<Icon name='email' />}
+    />
+  </Screen>);
 }
 
 const styles = StyleSheet.create({

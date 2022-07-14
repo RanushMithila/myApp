@@ -4,7 +4,7 @@ import AppText from '../components/AppText';
 import ListItem from '../components/ListItem';
 import colors from '../config/colors';
 
-function ListingScreen(props) {
+function ListingDetailsScreen(props) {
     return (
         <View >
             <Image 
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
         marginVertical: 40,
     }
 })
-export default ListingScreen;
+export default ListingDetailsScreen;
