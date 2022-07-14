@@ -1,10 +1,12 @@
 import React from 'react';
 
+import Screen from '../components/Screen';
+
 function ListingScreen(props) {
     return (
-        <div>
+        <Screen >
             
-        </div>
+        </Screen>
     );
 }
 
