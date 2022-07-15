@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Switch, Text, TextInput } from 'react-native';
 
 import LoginScreen from './app/screens/LoginScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
@@ -12,9 +12,20 @@ import Icon from './app/components/Icon';
 import ListItem from './app/components/ListItem';
 import AccountScreen from './app/screens/AccountScreen';
 import ListingScreen from './app/screens/ListingScreen';
+import AppTextInput from './app/components/AppTextInput';
 
 export default function App() {
-  return <ListingScreen />;
+
+  const [isNew, setIsNew] = useState(false);
+
+  return (
+    <Screen>
+      <Switch 
+      onValueChange={newValue => setIsNew(newValue)}
+      value={isNew}
+      />
+    </Screen>
+  );
 }
 
 const styles = StyleSheet.create({
