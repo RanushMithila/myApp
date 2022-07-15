@@ -1,23 +1,55 @@
-import React from 'react';
-import { View } from 'react-native';
-import Card from '../components/Card';
+import React, { useState } from 'react';
+import { StyleSheet, Image } from 'react-native';
+
+import AppTextInput from '../components/AppTextInput';
+import Screen from '../components/Screen';
+import AppButton from '../components/AppButton';
 
 function LoginScreen(props) {
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
     return (
-        <View 
-            style={{
-                backgroundColor: '#e8e8e8',
-                pasdding: 20,
-                paddingTop: 100,
-            }}
-        >
-            <Card 
-                title='Jacket'
-                subTitle='$100'
-                image={require('../assets/jacket.jpg')}
+        <Screen style={styles.container}>
+            <Image 
+                style={styles.logo}
+                source={require('../assets/logo-red.png')}
             />
-        </View>
+            <AppTextInput 
+                autoCapitalize='none'
+                autoCorrect={false}
+                icon='email'
+                keyboardType='email-address'
+                onChange={text => setEmail(text)}
+                placeholder='email'
+                textContentType='emailAddress'
+            />
+            <AppTextInput 
+                autoCapitalize='none'
+                autoCorrect={false}
+                icon='lock'
+                onChange={text => setPassword(text)}
+                placeholder='Password'
+                secureTextEntry
+                textContentType='password'
+            />
+            <AppButton 
+                title='Login'
+                onPress={() => console.log(email, password)}
+            />
+        </Screen>
     );
 }
 
+const styles = StyleSheet.create({
+    container: {
+        padding: 10
+    },
+    logo: {
+        width: 80,
+        height: 80,
+        alignSelf: 'center',
+        marginTop: 50,
+        marginBottom: 20,
+    }
+})
 export default LoginScreen;
