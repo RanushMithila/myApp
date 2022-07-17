@@ -9,8 +9,8 @@ import ListItemDeleteAction from '../components/ListItemDeleteAction';
 const initialMessages = [
     {
         id: 1,
-        title: 'T1',
-        description: 'D1',
+        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque luctus massa, nec sodales eros porttitor vel. Sed tortor libero, maximus eu elementum at, posuere id enim. Aliquam pellentesque est quis justo commodo, in pellentesque lorem rutrum. Phasellus scelerisque pulvinar purus, et convallis turpis placerat id. Phasellus euismod libero convallis, sollicitudin elit id, suscipit massa. Suspendisse potenti. Aliquam venenatis orci sapien, quis consectetur erat luctus in.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque luctus massa, nec sodales eros porttitor vel. Sed tortor libero, maximus eu elementum at, posuere id enim. Aliquam pellentesque est quis justo commodo, in pellentesque lorem rutrum. Phasellus scelerisque pulvinar purus, et convallis turpis placerat id. Phasellus euismod libero convallis, sollicitudin elit id, suscipit massa. Suspendisse potenti. Aliquam venenatis orci sapien, quis consectetur erat luctus in.',
         image: require('../assets/rmb.jpg')
     },
     {

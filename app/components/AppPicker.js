@@ -7,13 +7,22 @@ import AppText from './AppText';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
 
-function AppPicker({ icon, placeholder, items, onSelectItem, selectedItem }) {
+function AppPicker({ 
+    icon, 
+    placeholder, 
+    items, 
+    onSelectItem, 
+    numberOfColumns = 1, 
+    PickerItemComponent = PickerItem,
+    selectedItem, 
+    width = '100%' 
+}) {
 
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <>
             <TouchableWithoutFeedback onPress={ () => setModalVisible(true) }>
-                <View style={styles.container}>
+                <View style={[styles.container, {width}]}>
                     {icon && (
                         <MaterialCommunityIcons 
                             name={icon}
@@ -23,7 +32,7 @@ function AppPicker({ icon, placeholder, items, onSelectItem, selectedItem }) {
                         />
                     )}
                     {selectedItem ? (
-                        <AppText style={styles.text}>{selectedItem.lable}</AppText>
+                        <AppText style={styles.text}>{selectedItem.label}</AppText>
                     ) : (
                         <AppText style={styles.placeholder}>{placeholder}</AppText>
                     )}
@@ -39,10 +48,12 @@ function AppPicker({ icon, placeholder, items, onSelectItem, selectedItem }) {
                     <Button title='close' onPress={() => setModalVisible(false)}/>
                     <FlatList 
                         data={items}
+                        numColumns={numberOfColumns}
                         keyExtractor={item => item.value.toString()}
                         renderItem={({ item }) => 
-                            <PickerItem 
-                                lable={item.lable}
+                            <PickerItemComponent 
+                                item={item}
+                                label={item.label}
                                 onPress={() => {
                                     setModalVisible(false);
                                     onSelectItem(item);
@@ -61,7 +72,6 @@ const styles = StyleSheet.create({
         backgroundColor: defaultStyles.colors.light,
         borderRadius: 25,
         flexDirection: 'row',
-        width: '100%',
         padding: 15,
         marginVertical: 10
     },
