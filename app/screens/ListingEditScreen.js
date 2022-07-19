@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+import * as Location from 'expo-location';
 
 import {
   Form,
@@ -76,6 +77,20 @@ const categories = [
 ];
 
 function ListingEditScreen() {
+  const [location, setLocation] = useState(null);
+
+  const getLocation = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted'){
+      return;
+    }else{
+      const { coords } = await Location.getLastKnownPositionAsync();
+      setLocation( { coords });
+    }
+  }
+
+  useEffect(() => { getLocation() }, []);
+
   return (
     <Screen style={styles.container}>
       <Form
