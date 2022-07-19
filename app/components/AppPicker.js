@@ -13,7 +13,7 @@ function AppPicker({
     items, 
     onSelectItem, 
     numberOfColumns = 1, 
-    PickerItemComponent = PickerItem,
+    PickerItemComponent = {PickerItem},  //this line I changed little bit <========================| 
     selectedItem, 
     width = '100%' 
 }) {

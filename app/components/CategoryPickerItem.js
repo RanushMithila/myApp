@@ -1,21 +1,25 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import AppText from './AppText';
 
 import Icon from './Icon';
 
 function CategoryPickerItem({ item, onPress }) {
     return (
-        <View style={styles.container}>
-            <Icon backgroundColor={item.backgroundColor} name={item.icon} size={80}/>
-            <AppText style={styles.label}>{item.label}</AppText>
-        </View>
+        
+            <View style={styles.container}>
+                <TouchableOpacity onPress={onPress}>
+                <Icon backgroundColor={item.backgroundColor} name={item.icon} size={80}/>
+                <AppText style={styles.label}>{item.label}</AppText>
+                </TouchableOpacity>
+            </View>
     );
 }
 
+
 const styles = StyleSheet.create({
     container:{
-        paddingHorizontal: 20,
+        paddingHorizontal: 30,
         paddingVertical: 15,
         alignItems: 'center',
         width: '33%'

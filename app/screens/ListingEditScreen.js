@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
-import CategoryPickerItem from "../components/CategoryPickerItem";
+import * as Location from 'expo-location';
 
 import {
   AppForm as Form,
@@ -9,6 +9,7 @@ import {
   AppFormPicker as Picker,
   SubmitButton,
 } from "../components/forms";
+import CategoryPickerItem from "../components/CategoryPickerItem";
 import FormImagePicker from "../components/forms/FormImagePicker";
 import Screen from "../components/Screen";
 
@@ -30,6 +31,20 @@ const categories = [
 ];
 
 function ListingEditScreen() {
+  const [outLocation, setLocation] = useState();
+
+  const getLocation = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') return;
+    const {coords: {latitude, longitude}} = await Location.getLastKnownPositionAsync();
+    // alert(latitude);
+    // alert(longitude);
+    setLocation({ latitude, longitude });
+  }
+
+
+  useEffect(() => { getLocation() }, []);
+
   return (
     <Screen style={styles.container}>
       <Form
@@ -57,8 +72,8 @@ function ListingEditScreen() {
           name="category" 
           placeholder="Category" 
           width='50%' 
-          // numberOfColumns={3}
-          // PickerItemComponent={CategoryPickerItem}
+          numberOfColumns={3}
+          PickerItemComponent={CategoryPickerItem}
         />
         <FormField
           maxLength={255}
