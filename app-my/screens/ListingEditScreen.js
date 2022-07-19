@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
+//import * as Location from 'expo-location';
 
 import {
-  Form,
-  FormField,
-  FormPicker as Picker,
+  AppForm,
+  AppFormField,
+  AppFormPicker,
   SubmitButton,
 } from "../components/forms";
 import CategoryPickerItem from "../components/CategoryPickerItem";
+import FormImagePicker from "../components/forms/FormImagePicker";
 import Screen from "../components/Screen";
 
 const validationSchema = Yup.object().shape({
-  title: Yup.string().required().min(1).label("Title"),
-  price: Yup.number().required().min(1).max(10000).label("Price"),
+  title: Yup.string().required().min(3).label("Title"),
+  price: Yup.number().required().min(1).max(100000).label("Price"),
   description: Yup.string().label("Description"),
   category: Yup.object().required().nullable().label("Category"),
+  images: Yup.array().min(1, 'Please select at least one image')
 });
 
 const categories = [
@@ -76,35 +79,52 @@ const categories = [
 ];
 
 function ListingEditScreen() {
+  // const [outLocation, setLocation] = useState();
+
+  // const getLocation = async () => {
+  //   const { status } = await Location.requestForegroundPermissionsAsync();
+  //   if (status !== 'granted'){
+  //     return;
+  //   }else{
+  //     const { coords } = await Location.getLastKnownPositionAsync();
+  //     setLocation({ coords });
+  //   }
+  // }
+
+
+  // useEffect(() => { getLocation() }, []);
+
   return (
     <Screen style={styles.container}>
-      <Form
+      <AppForm
         initialValues={{
           title: "",
           price: "",
           description: "",
           category: null,
+          images: [],
         }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        <FormField maxLength={255} name="title" placeholder="Title" />
-        <FormField
+        <FormImagePicker name='images'/>
+        <AppFormField maxLength={255} name="title" placeholder="Title" />
+        <AppFormField
           keyboardType="numeric"
-          maxLength={8}
+          maxLength={9}
           name="price"
           placeholder="Price"
           width={120}
         />
-        <Picker
-          items={categories}
-          name="category"
+        <AppFormPicker 
+          items={categories} 
+          name="category" 
+          placeholder="Category" 
+          width='50%' 
           numberOfColumns={3}
           PickerItemComponent={CategoryPickerItem}
-          placeholder="Category"
-          width="50%"
         />
-        <FormField
+        <AppFormField
           maxLength={255}
           multiline
           name="description"
@@ -112,7 +132,7 @@ function ListingEditScreen() {
           placeholder="Description"
         />
         <SubmitButton title="Post" />
-      </Form>
+      </AppForm>
     </Screen>
   );
 }

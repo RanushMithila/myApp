@@ -1,25 +1,25 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+// import React from 'react';
+// import { StyleSheet } from 'react-native';
+// import * as ImagePicker from 'expo-image-picker';
 
-import ListingEditScreen from './app/screens/ListingEditScreen';
-import Screen from './app/components/Screen';
-import ImageInput from './app/components/ImageInput';
-import ImageInputList from './app/components/ImageInputList';
+// import ListingEditScreen from './app/screens/ListingEditScreen';
+// import Screen from './app/components/Screen';
+// import ImageInput from './app/components/ImageInput';
+// import ImageInputList from './app/components/ImageInputList';
 
 
-export default function App() {
-  return <ListingEditScreen />
-}
+// export default function App() {
+//   return <ListingEditScreen />
+// }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'greenyellow',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: 'greenyellow',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
 
 
 // import React, { useState, useEffect } from 'react';
@@ -52,3 +52,11 @@ const styles = StyleSheet.create({
 //     </SafeAreaView>
 //   );
 // }
+
+
+import React from "react";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
+
+export default function App() {
+  return <ListingEditScreen />;
+}
